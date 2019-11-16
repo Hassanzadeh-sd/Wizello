@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+
+{% block title %}Employees{% endblock title %}
+
+{% block content %}
+<div class="card-header bg-transparent d-inline">
+</div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Act</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+{% for obj_employee in employees %}
+    
+                  <tr>
+                    <th scope="row">
+                        <span>{{obj_employee.id}}</span>
+                    </th>
+                    <td>
+                        <span>{{obj_employee.user.username}}</span>
+                    </td>                
+                    <td>
+                        <div>
+                            <a href="{% url 'account:accountdeactive' obj_employee.id %}">DeActivate</a> / 
+                        </div>
+                    </td>
+                  </tr>
+{% endfor %}
+                </tbody>
+              </table>
+            </div>
+{% endblock content %}
