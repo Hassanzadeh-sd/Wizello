@@ -1,17 +1,7 @@
-### OSX ###
-.DS_Store
-.AppleDouble
-.LSOverride
-
 # VS Code
 /ENV/*
 .vscode
 ENV
-
-
-# Icon must end with two \r
-Icon
-
 
 # Thumbnails
 ._*
@@ -87,7 +77,6 @@ target/
 *.pot
 *.pyc
 __pycache__/
-local_settings.py
 
 .env
 db.sqlite3
