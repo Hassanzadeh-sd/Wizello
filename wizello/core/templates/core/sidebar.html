@@ -8,7 +8,7 @@
       </button>
       <!-- Brand -->
       <a class="navbar-brand pt-0" href="./index.html">
-        <img src="{% static 'accounts/img/brand/blue.png' %}" class="navbar-brand-img" alt="...">
+        <img src="{% static 'core/img/brand/blue.png' %}" class="navbar-brand-img" alt="...">
       </a>
       <!-- User -->
       <ul class="nav align-items-center d-md-none">
@@ -27,34 +27,34 @@
           <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <div class="media align-items-center">
               <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="{% static 'accounts/img/theme/team-1-800x800.jpg' %}">
+                <img alt="Image placeholder" src="{% static 'core/img/theme/team-1-800x800.jpg' %}">
               </span>
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-left">
             <div class=" dropdown-header noti-title">
-              <h6 class="text-overflow m-0">خوش آمدید</h6>
+              <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
             <a href="./examples/profile.html" class="dropdown-item">
               <i class="ni ni-single-02"></i>
-              <span>پروفایل من</span>
+              <span>My profile</span>
             </a>
             <a href="./examples/profile.html" class="dropdown-item">
               <i class="ni ni-settings-gear-65"></i>
-              <span>تنظیمات</span>
+              <span>Settings</span>
             </a>
             <a href="./examples/profile.html" class="dropdown-item">
               <i class="ni ni-calendar-grid-58"></i>
-              <span>فعالیت</span>
+              <span>Activity</span>
             </a>
             <a href="./examples/profile.html" class="dropdown-item">
               <i class="ni ni-support-16"></i>
-              <span>پشتیبانی</span>
+              <span>Support</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="{% url 'accounts:logout' %}" class="dropdown-item">
+            <a href="{% url 'core:logout' %}" class="dropdown-item">
               <i class="ni ni-user-run"></i>
-              <span>خروج</span>
+              <span>Logout</span>
             </a>
           </div>
         </li>
@@ -66,7 +66,7 @@
           <div class="row">
             <div class="col-6 collapse-brand">
               <a href="./index.html">
-                <img src="{% static 'accounts/img/brand/blue.png' %}">
+                <img src="{% static 'core/img/brand/blue.png' %}">
               </a>
             </div>
             <div class="col-6 collapse-close">
@@ -89,90 +89,13 @@
           </div>
         </form>
         <!-- Navigation -->
-        <h6 class="navbar-heading text-muted">پست ها</h6>
+        <h6 class="navbar-heading text-muted">Dashboard</h6>
         <ul class="navbar-nav">
+        <hr class="my-3">
+          <h6 class="navbar-heading text-muted">Tasks</h6>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'post:postlist' %}">
-              <i class="ni ni-archive-2 text-blue"></i> نوشته ها
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'post:posttaglist' %}">
-              <i class="ni ni-single-copy-04 text-blue"></i> برچسب ها
-            </a>
-          </li>          
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'post:postcategorylist' %}">
-              <i class="ni ni-app text-blue"></i> دسته بندی ها
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'post:postcommentlist' %}">
-              <i class="ni ni-pin-3 text-blue"></i> نظرات کاربران
-            </a>
-          </li>
-          <hr class="my-3">
-          <h6 class="navbar-heading text-muted">تصاویر</h6>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'gallery:gallerylist' %}">
-              <i class="ni ni-album-2 text-orange"></i> گالری
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'gallery:imagelist' %}">
-              <i class="ni ni-image text-orange"></i> تصاویر
-            </a>
-          </li>
-          <hr class="my-3">
-          <h6 class="navbar-heading text-muted">فروشگاه</h6>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'product:productlist' %}">
-              <i class="ni ni-shop text-danger"></i> محصولات
-            </a>
-          </li>                 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'product:productcategorylist' %}">
-              <i class="ni ni-app text-danger"></i> دسته بندی
-            </a>
-          </li> 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'shopping:orderlist' %}">
-              <i class="ni ni-cart text-danger"></i> سفارشات
-            </a>
-          </li> 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'shopping:invoicelist' %}">
-              <i class="ni ni-check-bold text-danger"></i> فاکتورها
-            </a>
-          </li>  
-          <hr class="my-3">
-          <h6 class="navbar-heading text-muted">صفحات ثابت</h6>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'page:pagecategorylist' %}">
-              <i class="ni ni-single-copy-04 text-blue"></i> دسته بندی
-            </a>
-          </li>                    
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'page:pagelist' %}">
-              <i class="ni ni-single-copy-04 text-blue"></i> برگه ها
-            </a>
-          </li>          
-          <h6 class="navbar-heading text-muted">فهرست ها</h6>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'menu:menulist' %}">
-              <i class="ni ni-single-copy-04 text-blue"></i> فهرست
-            </a>
-          </li>                    
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'menu:menuitemlist' %}">
-              <i class="ni ni-single-copy-04 text-blue"></i> اجزای فهرست
-            </a>
-          </li>          
-          <hr class="my-3">
-          <h6 class="navbar-heading text-muted">کاربران</h6>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'accounts:register' %}">
-              <i class="ni ni-circle-08 text-yellow"></i> ثبت نام
+            <a class="nav-link" href="#">
+              <i class="ni ni-circle-08 text-yellow"></i> Requests
             </a>
           </li>
                     

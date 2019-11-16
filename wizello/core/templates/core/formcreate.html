@@ -1,7 +1,5 @@
-{% extends "accounts/base.html" %}
+{% extends "core/base.html" %}
 {% load crispy_forms_tags %}
-
-{% block title %}پنل مدیریتی{% endblock title %}
 
 {% block content %}
 <div class="card-header bg-transparent">
@@ -13,7 +11,7 @@
     {{ form.media }}
     {{ form|crispy }}
     <input type="hidden" name="user" value="{{request.user.id}}" />
-    <button type="submit" class="btn btn-success">ثبت اطلاعات</button>
+    <button type="submit" class="btn btn-success">Save</button>
   </form>
 </div>
 {% endblock content %}

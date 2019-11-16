@@ -11,7 +11,7 @@
             <div class="input-group-prepend">
             <span class="input-group-text"><i class="fas fa-search"></i></span>
             </div>
-            <input class="form-control" placeholder="جستجو" type="text">
+            <input class="form-control" placeholder="Search" type="text">
         </div>
         </div>
     </form>
@@ -24,34 +24,34 @@
                 <span class="mb-0 text-sm  font-weight-bold">{{request.user.username}}</span>
             </div>
             <span class="avatar avatar-sm rounded-circle">
-                <img alt="Image placeholder" src="{% static 'accounts/img/theme/team-4-800x800.jpg' %}">
+                <img alt="Image placeholder" src="{% static 'core/img/theme/team-4-800x800.jpg' %}">
             </span>
             </div>
         </a>
         <div class="dropdown-menu dropdown-menu-arrow dropdown-menu-left">
             <div class=" dropdown-header noti-title">
-            <h6 class="text-overflow m-0">خوش آمدید</h6>
+            <h6 class="text-overflow m-0">Welcome!</h6>
             </div>
             <a href="./examples/profile.html" class="dropdown-item">
             <i class="ni ni-single-02"></i>
-            <span>پروفایل من</span>
+            <span>My Profile</span>
             </a>
             <a href="./examples/profile.html" class="dropdown-item">
             <i class="ni ni-settings-gear-65"></i>
-            <span>تنظیمات کاربری</span>
+            <span>Settings</span>
             </a>
             <a href="./examples/profile.html" class="dropdown-item">
             <i class="ni ni-calendar-grid-58"></i>
-            <span>فعالیت</span>
+            <span>Activity</span>
             </a>
             <a href="./examples/profile.html" class="dropdown-item">
             <i class="ni ni-support-16"></i>
-            <span>پشتیبانی</span>
+            <span>Support</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="{% url 'accounts:logout' %}" class="dropdown-item">
+            <a href="{% url 'core:logout' %}" class="dropdown-item">
             <i class="ni ni-user-run"></i>
-            <span>خروج</span>
+            <span>Logout</span>
             </a>
         </div>
         </li>

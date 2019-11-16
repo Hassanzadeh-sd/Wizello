@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
   <meta name="author" content="Creative Tim">
-  <title>{% block title %}{% endblock title %}</title>
+  <title>Wizello Dashboard</title>
   <!-- Favicon -->
   <link href="{% static 'core/img/brand/favicon.png' %}" rel="icon" type="image/png">
   <!-- Fonts -->
@@ -32,8 +32,8 @@
       <div class="container-fluid">
         <div class="header-body">
 		
-        {% include "core/topnav.html" with pagename='پنل مدیریت'%}
-		{% include "core/card.html" %}
+        {% include "core/topnav.html" with pagename='Managment'%}
+		    {% include "core/card.html" %}
 
 		
         </div>
@@ -47,8 +47,8 @@
 		<div class="row">
 			<div class="col">
 				<div class="card shadow">
-                    {% block content %}
-                    {% endblock content %}
+            {% block content %}
+            {% endblock content %}
 				</div>
 			</div>
 		</div>
