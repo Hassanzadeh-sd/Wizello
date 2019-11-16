@@ -1,3 +1,4 @@
+
 ### OSX ###
 .DS_Store
 .AppleDouble
@@ -5,7 +6,8 @@
 
 # VS Code
 .vscode
-ENV/
+
+
 
 # Icon must end with two \r
 Icon
