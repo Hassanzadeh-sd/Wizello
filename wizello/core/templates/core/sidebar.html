@@ -1,6 +1,6 @@
 {% load static %}
   <!-- Sidenav -->
-  <nav class="navbar navbar-vertical fixed-right navbar-expand-md navbar-light bg-white" id="sidenav-main">
+  <nav class="navbar navbar-vertical fixed-left navbar-expand-md navbar-light bg-white" id="sidenav-main">
     <div class="container-fluid">
       <!-- Toggler -->
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidenav-collapse-main" aria-controls="sidenav-main" aria-expanded="false" aria-label="Toggle navigation">
@@ -92,13 +92,17 @@
         <h6 class="navbar-heading text-muted">Dashboard</h6>
         <ul class="navbar-nav">
         <hr class="my-3">
-          <h6 class="navbar-heading text-muted">Tasks</h6>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <i class="ni ni-circle-08 text-yellow"></i> Requests
+              <i class="ni ni-bell-55 text-yellow"></i> Tasks
             </a>
+            <a class="nav-link" href="#">
+              <i class="ni ni-archive-2 text-info"></i> Requests
+            </a>            
+            <a class="nav-link" href="#">
+              <i class="ni ni-circle-08 text-danger"></i> Employee
+            </a>            
           </li>
-                    
         </ul>
       </div>
     </div>
