@@ -12,7 +12,7 @@ class Task(BaseModel):
     class Meta:
         verbose_name = "Task"
         verbose_name_plural = "Tasks"
-        ordering = ['-deadline']
+        ordering = ['deadline']
 
     def __str__(self):
         return self.subject
