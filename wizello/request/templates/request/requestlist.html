@@ -13,6 +13,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Organization</th>
                     <th scope="col">User</th>
+                    <th scope="col">Position</th>
                     <th scope="col">Act</th>
                   </tr>
                 </thead>
@@ -30,6 +31,9 @@
                     <td>
                         <span>{{obj_request.user.username}}</span>
                     </td>
+                    <td>
+                        <span>{{obj_request.get_position_display}}</span>
+                    </td>                    
                     <td>
                         <div>
                             <a href="{% url 'request:requestaccept' obj_request.id %}">Active</a> / 
