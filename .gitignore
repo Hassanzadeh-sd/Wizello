@@ -6,7 +6,7 @@
 # VS Code
 /ENV/*
 .vscode
-
+ENV
 
 
 # Icon must end with two \r
