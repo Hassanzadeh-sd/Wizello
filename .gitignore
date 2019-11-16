@@ -1,10 +1,10 @@
-
 ### OSX ###
 .DS_Store
 .AppleDouble
 .LSOverride
 
 # VS Code
+/ENV/*
 .vscode
 
 
