@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Wizello Dashboard{% endblock title %}
+
+{% block content %}
+<div class="card-header bg-transparent">
+    <h3 class="mb-0">Delete</h3>
+</div>
+<div class="card-body">
+    <form method="post">{% csrf_token %}
+        <p>do you want to delete? ( {{ object }} ) ?</p>
+        <input type="submit" class="btn btn-warning" value="Delete">
+    </form>
+</div>
+{% endblock content %}
