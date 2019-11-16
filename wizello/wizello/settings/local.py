@@ -84,8 +84,12 @@ WSGI_APPLICATION = 'wizello.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'wizello_db',
+        'USER': 'wizello_usr',
+        'PASSWORD': 'jbZV1?#&3V5_A&$@',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
