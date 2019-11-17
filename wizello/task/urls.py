@@ -12,10 +12,11 @@ urlpatterns = [
     path('edit/<int:pk>/', TaskUpdateView.as_view(), name="taskupdate"),
     path('delete/<int:pk>/', TaskDeleteView.as_view(), name="taskdelete"),
     # manager
-    path('manager/', TaskListView.as_view(), name="taskmanagerlist"),
-    path('manager/create/', TaskCreateView.as_view(), name="taskmanagercreate"),
-    path('manager/edit/<int:pk>/', TaskListView.as_view(),
+    path('manager/', TaskManagerListView.as_view(), name="taskmanagerlist"),
+    path('manager/create/', TaskManagerCreateView.as_view(),
+         name="taskmanagercreate"),
+    path('manager/edit/<int:pk>/', TaskManagerUpdateView.as_view(),
          name="taskmanagerupdate"),
     path('manager/delete/<int:pk>/',
-         TaskListView.as_view(), name="taskmanagerdelete"),
+         TaskManagerDeleteView.as_view(), name="taskmanagerdelete"),
 ]

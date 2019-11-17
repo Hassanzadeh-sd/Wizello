@@ -46,14 +46,14 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 
 # -------------------- Task Manager List
 
-
-class TaskManagerListView(LoginRequiredMixin, View):
+class TaskManagerListView(LoginRequiredMixin, ListView):
     context_object_name = "tasks"
     template_name = "task/tasklist.html"
 
-    def view(request, *args, **kwargs):
-        self.queryset = Task.objects.all()
-        return HttpResponseRedirect(reverse_lazy("task:tasklist"))
+    def get_queryset(self):
+        organization = self.request.user.employee.organization
+        qs = Task.objects.filter(assignee__employee__organization=organization)
+        return qs
 
 
 class TaskManagerCreateView(LoginRequiredMixin, CreateView):

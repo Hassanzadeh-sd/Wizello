@@ -8,7 +8,7 @@ class Employee(BaseModel):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="employee")
     organization = models.ForeignKey(
-        Organization, on_delete=models.CASCADE, default=1)
+        Organization, on_delete=models.CASCADE, default=1, related_name="employee")
 
     class Meta:
         verbose_name = "Employee"
