@@ -1,16 +1,23 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from django.views.generic import ListView, CreateView, View, DeleteView
-from .models import Request, User
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.urls import reverse_lazy
-
+from .models import Request, User
 
 # -------------------- Request List
+
+
 class RequestListView(LoginRequiredMixin, ListView):
     model = Request
     context_object_name = "requests"
     template_name = "request/requestlist.html"
+
+    def get_queryset(self):
+        organization = self.request.user.employee.organization
+        qs = Request.objects.filter(
+            organization=organization).exclude(user=self.request.user)
+        return qs
 
 
 class RequestCreateView(LoginRequiredMixin, CreateView):
