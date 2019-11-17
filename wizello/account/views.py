@@ -4,24 +4,29 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.urls import reverse_lazy
 from .forms import RegisterForm
-from .models import Employee, User
+from .models import Employee, User, Organization
 
 # -------------------- Account List
 
 
 class EmployeeListView(LoginRequiredMixin, ListView):
-    model = Employee
     context_object_name = "employees"
     template_name = "account/accountlist.html"
+
+    def get_queryset(self):
+        organization = self.request.user.employee.organization
+        qs = Employee.objects.filter(
+            organization=organization).exclude(user=self.request.user)
+        return qs
 
 
 class EmployeeDeactiveView(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         obj_employee = get_object_or_404(Employee, pk=pk)
         # check permission
-        obj_employee.organization = 1
+        obj_employee.organization = None
         obj_employee.save()
-        return HttpResponseRedirect(reverse_lazy("account:accountlist"))
+        return HttpResponseRedirect(reverse_lazy("account:employeelist"))
 
 
 # -------------------- Register
