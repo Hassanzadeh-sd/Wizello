@@ -7,7 +7,7 @@ class Task(BaseModel):
     description = models.TextField(max_length=400)
     deadline = models.DateTimeField()
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
-    assignee = models.ManyToManyField(User, related_name='assignee')
+    assignee = models.ManyToManyField(User, related_name='taskassignee')
 
     class Meta:
         verbose_name = "Task"

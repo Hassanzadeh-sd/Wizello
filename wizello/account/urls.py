@@ -1,11 +1,14 @@
 from django.urls import path
 from .views import (
-    AccountListView, AccountDeactiveView)
+    EmployeeListView, EmployeeDeactiveView, EmployeeRegisterView)
 
 app_name = 'account'
 
 urlpatterns = [
-    # request
-    path('', AccountListView.as_view(), name="accountlist"),
-    path('deactive/<int:pk>/', AccountDeactiveView.as_view(), name="accountdeactive"),
+    # employee
+    path('employee/', EmployeeListView.as_view(), name="employeelist"),
+    path('employee/register/', EmployeeRegisterView.as_view(),
+         name="employeeregister"),
+    path('employee/deactive/<int:pk>/', EmployeeDeactiveView.as_view(),
+         name="employeedeactive"),
 ]

@@ -1,42 +1,39 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView
-from .models import Task, User
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.urls import reverse_lazy
-
+from .models import Task, User
 
 # -------------------- Task List
+
+
 class TaskListView(LoginRequiredMixin, ListView):
-    model = Task
     context_object_name = "tasks"
     template_name = "task/tasklist.html"
+
+    def get_queryset(self):
+        qs = self.request.user.taskassignee.all()
+        return qs
 
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
-    fields = ('subject', 'description', 'deadline', 'assignee')
+    fields = ('subject', 'description', 'deadline')
     template_name = "core/formcreate.html"
     success_url = reverse_lazy("task:tasklist")
 
-
     def form_valid(self, form):
         self.object = form.save(commit=False)
-        self.object.user = self.request.user
+        self.object.owner = self.request.user
         self.object.save()
-
-        assignee = form.cleaned_data['assignee']
-        user_list = User.objects.filter(pk__in=assignee)
-        for objuser in user_list:
-            self.object.assignee.add(objuser)
-            
+        self.object.assignee.add(self.request.user)
         return HttpResponseRedirect(self.get_success_url())
-
 
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
-    fields = ('subject', 'description', 'deadline', 'assignee')
+    fields = ('subject', 'description', 'deadline')
     template_name = "core/formcreate.html"
     success_url = reverse_lazy("task:tasklist")
 
@@ -45,3 +42,47 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = "core/confirm_delete.html"
     success_url = reverse_lazy("task:tasklist")
+
+
+# -------------------- Task Manager List
+
+
+class TaskManagerListView(LoginRequiredMixin, View):
+    context_object_name = "tasks"
+    template_name = "task/tasklist.html"
+
+    def view(request, *args, **kwargs):
+        self.queryset = Task.objects.all()
+        return HttpResponseRedirect(reverse_lazy("task:tasklist"))
+
+
+class TaskManagerCreateView(LoginRequiredMixin, CreateView):
+    model = Task
+    fields = ('subject', 'description', 'deadline', 'assignee')
+    template_name = "core/formcreate.html"
+    success_url = reverse_lazy("task:taskmanagerlist")
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.owner = self.request.user
+        self.object.save()
+
+        assignee = form.cleaned_data['assignee']
+        user_list = User.objects.filter(pk__in=assignee)
+        for objuser in user_list:
+            self.object.assignee.add(objuser)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+
+class TaskManagerUpdateView(LoginRequiredMixin, UpdateView):
+    model = Task
+    fields = ('deadline', 'assignee')
+    template_name = "core/formcreate.html"
+    success_url = reverse_lazy("task:taskmanagerlist")
+
+
+class TaskManagerDeleteView(LoginRequiredMixin, DeleteView):
+    model = Task
+    template_name = "core/confirm_delete.html"
+    success_url = reverse_lazy("task:taskmanagerlist")

@@ -45,8 +45,14 @@ LOCAL_APPS = [
     'request',
     'task'
 ]
+THIRD_PARTY_APPS = [
+    'crispy_forms',
+]
+INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
-INSTALLED_APPS = DEFAULT_APPS + LOCAL_APPS
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/dashboard/'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

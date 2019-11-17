@@ -23,7 +23,7 @@ urlpatterns = [
     path('', include('core.urls')),
     path('task/', include('task.urls')),
     path('request/', include('request.urls')),
-    path('employee/', include('account.urls')),
+    path('account/', include('account.urls')),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

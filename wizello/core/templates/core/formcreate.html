@@ -10,7 +10,7 @@
     {% csrf_token %}
     {{ form.media }}
     {{ form|crispy }}
-    <input type="hidden" name="user" value="{{request.user.id}}" />
+    <input type="hidden" name="user" value="{{request.user.id}}" /><br>
     <button type="submit" class="btn btn-success">Save</button>
   </form>
 </div>

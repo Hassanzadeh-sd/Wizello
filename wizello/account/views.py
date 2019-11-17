@@ -1,21 +1,21 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
-from django.views.generic import ListView, View
-from .models import Employee, User
+from django.views.generic import ListView, View, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.urls import reverse_lazy
 from .forms import RegisterForm
+from .models import Employee, User
 
 # -------------------- Account List
 
 
-class AccountListView(LoginRequiredMixin, ListView):
+class EmployeeListView(LoginRequiredMixin, ListView):
     model = Employee
     context_object_name = "employees"
     template_name = "account/accountlist.html"
 
 
-class AccountDeactiveView(LoginRequiredMixin, View):
+class EmployeeDeactiveView(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         obj_employee = get_object_or_404(Employee, pk=pk)
         # check permission
@@ -25,7 +25,7 @@ class AccountDeactiveView(LoginRequiredMixin, View):
 
 
 # -------------------- Register
-class RegisterView(FormView):
+class EmployeeRegisterView(FormView):
     template_name = 'registration/register.html'
     form_class = RegisterForm
     success_url = reverse_lazy("core:login")
