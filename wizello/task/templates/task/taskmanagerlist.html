@@ -1,0 +1,48 @@
+{% extends "core/base.html" %}
+
+{% block title %}Organization Tasks{% endblock title %}
+
+{% block content %}
+<div class="card-header bg-transparent d-inline">
+    <a href="{% url 'task:taskmanagercreate' %}" class="btn btn-info">Create New Task</a>
+</div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Assignee</th>
+                    <th scope="col">Act</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+{% for obj_task in tasks %}
+    
+                  <tr>
+                    <th scope="row">
+                        <span>{{obj_task.id}}</span>
+                    </th>
+                    <th scope="row">
+                        <span>{{obj_task.subject}}</span>
+                    </th>
+                    <td>
+                        <span>{{obj_task.owner.username}}</span>
+                    </td>
+                    <td>
+                        <span>{{obj_task.get_assignee}}</span>
+                    </td>                    
+                    <td>
+                        <div>
+                            <a href="{% url 'task:taskmanagerupdate' obj_task.id %}">Edit</a> / 
+                            <a href="{% url 'task:taskmanagerdelete' obj_task.id %}">Delete</a>
+                        </div>
+                    </td>
+                  </tr>
+{% endfor %}
+                </tbody>
+              </table>
+            </div>
+{% endblock content %}

@@ -17,5 +17,11 @@ class Task(BaseModel):
     def __str__(self):
         return self.subject
 
+    def get_assignee(self):
+        assigneeNames = ""
+        for objAssignee in self.assignee.all():
+            assigneeNames += objAssignee.username + " , "
+        return assigneeNames
+
 #   def get_absolute_url(self):
 #        return reverse("task_detail", kwargs={"pk": self.pk})

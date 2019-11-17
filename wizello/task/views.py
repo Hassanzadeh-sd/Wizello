@@ -48,7 +48,7 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 
 class TaskManagerListView(LoginRequiredMixin, ListView):
     context_object_name = "tasks"
-    template_name = "task/tasklist.html"
+    template_name = "task/taskmanagerlist.html"
 
     def get_queryset(self):
         organization = self.request.user.employee.organization
