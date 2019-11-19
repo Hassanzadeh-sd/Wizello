@@ -7,6 +7,8 @@ from .forms import RegisterForm
 from .models import Employee, User, Organization
 
 # -------------------- Account List
+
+
 class EmployeeListView(LoginRequiredMixin, ListView):
     context_object_name = "employees"
     template_name = "account/accountlist.html"
@@ -44,10 +46,8 @@ class EmployeeRegisterView(FormView):
         obj_new_user = User.objects.get(username=username)
         obj_user_employee, created = Employee.objects.get_or_create(
             user=obj_new_user)
-        try:
-            obj_user_employee.organization = form.cleaned_data['organization']
-        except:
-            pass
+        obj_user_employee.organization = Organization.objects.get(
+            pk=form.cleaned_data['organization'])
         obj_user_employee.save()
 
-        return super(RegisterView, self).form_valid(form)
+        return super(EmployeeRegisterView, self).form_valid(form)

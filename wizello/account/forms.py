@@ -1,6 +1,7 @@
 
 from django import forms
 from django.contrib.auth.models import User
+from account.models import Organization
 
 
 class RegisterForm(forms.Form):
@@ -9,7 +10,13 @@ class RegisterForm(forms.Form):
     password1 = forms.CharField(widget=forms.PasswordInput, label="Password")
     password2 = forms.CharField(
         widget=forms.PasswordInput, label="Password Confirm")
-    organization = forms.CharField(label="organization")
+
+    selectOrganization = []
+    for objOrganization in Organization.objects.all():
+        selectOrganization.append([objOrganization.id, objOrganization.name])
+
+    organization = forms.CharField(
+        label="organization", widget=forms.Select(choices=selectOrganization))
 
     def clean_username(self):
         username = self.cleaned_data['username']
