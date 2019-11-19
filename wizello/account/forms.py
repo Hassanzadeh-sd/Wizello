@@ -11,13 +11,6 @@ class RegisterForm(forms.Form):
     password2 = forms.CharField(
         widget=forms.PasswordInput, label="Password Confirm")
 
-    selectOrganization = []
-    for objOrganization in Organization.objects.all():
-        selectOrganization.append([objOrganization.id, objOrganization.name])
-
-    organization = forms.CharField(
-        label="organization", widget=forms.Select(choices=selectOrganization))
-
     def clean_username(self):
         username = self.cleaned_data['username']
         if User.objects.filter(username__icontains=username).exists():

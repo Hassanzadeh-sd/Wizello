@@ -43,11 +43,4 @@ class EmployeeRegisterView(FormView):
         new_user.set_password(password1)
         new_user.save()
 
-        obj_new_user = User.objects.get(username=username)
-        obj_user_employee, created = Employee.objects.get_or_create(
-            user=obj_new_user)
-        obj_user_employee.organization = Organization.objects.get(
-            pk=form.cleaned_data['organization'])
-        obj_user_employee.save()
-
         return super(EmployeeRegisterView, self).form_valid(form)
