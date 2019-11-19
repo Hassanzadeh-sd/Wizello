@@ -40,6 +40,12 @@ class RequestCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
+
+        if form.cleaned_data['position'] == "M":
+            print("Form_Manager")
+        elif form.cleaned_data['position'] == "EO":
+            print("Form_EmployeeOrganization")
+
         self.object.save()
         return HttpResponseRedirect(self.get_success_url())
 
@@ -48,6 +54,10 @@ class RequestManagerAcceptView(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         obj_request = get_object_or_404(Request, pk=pk)
         obj_request.agreement = timezone.now()
+        if obj_request.position == "M":
+            print("Accept_Manager")
+        elif obj_request.position == "EO":
+            print("Accept_EmployeeOrganization")        
         obj_request.save()
         return HttpResponseRedirect(reverse_lazy("request:requestmanagerlist"))
 

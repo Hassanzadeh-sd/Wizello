@@ -8,10 +8,9 @@ class Request(BaseModel):
     POSITION_TYPE = (
         ('M', "Manager"),
         ('EO', "Employee Organization"),
-        ('E', "Employee"),
     )
     position = models.CharField(
-        max_length=15, choices=POSITION_TYPE, default='E')
+        max_length=15, choices=POSITION_TYPE, default='EO')
     agreement = models.DateTimeField(blank=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
