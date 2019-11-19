@@ -1,10 +1,9 @@
 {% extends "core/base.html" %}
 
-{% block title %}Requests{% endblock title %}
+{% block title %}Manager Requests{% endblock title %}
 
 {% block content %}
 <div class="card-header bg-transparent d-inline">
-    <a href="{% url 'request:requestcreate' %}" class="btn btn-info">Create New Request</a>
 </div>
             <div class="table-responsive">
               <table class="table align-items-center table-flush">
@@ -14,7 +13,7 @@
                     <th scope="col">Organization</th>
                     <th scope="col">User</th>
                     <th scope="col">Position</th>
-                    <th scope="col">Status</th>
+                    <th scope="col">Act</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -35,7 +34,14 @@
                         <span>{{obj_request.get_position_display}}</span>
                     </td>                    
                     <td>
-                        <span>{{obj_request.get_request_status}}</span>
+                    {% if obj_request.agreement %}
+                      <span>{{obj_request.agreement}}</span>
+                    {% else %}
+                        <div>
+                            <a href="{% url 'request:requestaccept' obj_request.id %}">Active</a> / 
+                            <a href="{% url 'request:requestdelete' obj_request.id %}">Delete</a>
+                        </div>
+                    {% endif %}
                     </td>
                   </tr>
 {% endfor %}

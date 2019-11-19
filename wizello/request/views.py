@@ -8,15 +8,26 @@ from .models import Request, User
 # -------------------- Request List
 
 
+class RequestManagerListView(LoginRequiredMixin, ListView):
+    model = Request
+    context_object_name = "requests"
+    template_name = "request/requestmanagerlist.html"
+
+    def get_queryset(self):
+        organization = self.request.user.employee.organization
+        qs = Request.objects.filter(
+            organization=organization).exclude(user=self.request.user)
+        return qs
+
+
 class RequestListView(LoginRequiredMixin, ListView):
     model = Request
     context_object_name = "requests"
     template_name = "request/requestlist.html"
 
     def get_queryset(self):
-        organization = self.request.user.employee.organization
         qs = Request.objects.filter(
-            organization=organization).exclude(user=self.request.user)
+            user=self.request.user)
         return qs
 
 
@@ -30,17 +41,15 @@ class RequestCreateView(LoginRequiredMixin, CreateView):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
         self.object.save()
-
         return HttpResponseRedirect(self.get_success_url())
 
 
-class RequestAcceptView(LoginRequiredMixin, View):
+class RequestManagerAcceptView(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         obj_request = get_object_or_404(Request, pk=pk)
-        # check permission
         obj_request.agreement = timezone.now()
         obj_request.save()
-        return HttpResponseRedirect(reverse_lazy("request:requestlist"))
+        return HttpResponseRedirect(reverse_lazy("request:requestmanagerlist"))
 
 
 class RequestDeleteView(LoginRequiredMixin, DeleteView):

@@ -7,8 +7,6 @@ from .forms import RegisterForm
 from .models import Employee, User, Organization
 
 # -------------------- Account List
-
-
 class EmployeeListView(LoginRequiredMixin, ListView):
     context_object_name = "employees"
     template_name = "account/accountlist.html"

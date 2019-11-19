@@ -23,5 +23,7 @@ class Request(BaseModel):
     def __str__(self):
         return "{} to {}".format(self.user.username, self.position)
 
-#    def get_absolute_url(self):
-#        return reverse("request_detail", kwargs={"pk": self.pk})
+    def get_request_status(self):
+        if self.agreement:
+            return "Verify"
+        return "-"
