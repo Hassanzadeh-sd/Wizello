@@ -23,7 +23,6 @@ class EmployeeListView(LoginRequiredMixin, ListView):
 class EmployeeDeactiveView(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         obj_employee = get_object_or_404(Employee, pk=pk)
-        # check permission
         obj_employee.organization = None
         obj_employee.save()
         return HttpResponseRedirect(reverse_lazy("account:employeelist"))
@@ -42,5 +41,11 @@ class EmployeeRegisterView(FormView):
         new_user = User.objects.create(username=username, email=email)
         new_user.set_password(password1)
         new_user.save()
+
+        obj_new_user = User.objects.get(pk=new_user.id)
+        objNewEmployee, created = Employee.objects.get_or_create(
+            user=obj_new_user)
+        objNewEmployee.position = "E"
+        objNewEmployee.save()
 
         return super(EmployeeRegisterView, self).form_valid(form)
