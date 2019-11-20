@@ -16,7 +16,7 @@ class EmployeeListView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         organization = self.request.user.employee.organization
         qs = Employee.objects.filter(
-            organization=organization).exclude(user=self.request.user)
+            organization=organization).exclude(user=self.request.user).exclude(position="M")
         return qs
 
 
@@ -24,6 +24,7 @@ class EmployeeDeactiveView(LoginRequiredMixin, View):
     def get(self, request, pk, *args, **kwargs):
         obj_employee = get_object_or_404(Employee, pk=pk)
         obj_employee.organization = None
+        obj_employee.position = "E"
         obj_employee.save()
         return HttpResponseRedirect(reverse_lazy("account:employeelist"))
 

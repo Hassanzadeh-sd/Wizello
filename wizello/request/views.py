@@ -52,6 +52,7 @@ class RequestManagerAcceptView(LoginRequiredMixin, View):
 
         objEmployee = Employee.objects.get(user=obj_request.user)
         objEmployee.position = obj_request.position
+        objEmployee.organization = obj_request.organization
         objEmployee.save()
 
         obj_request.save()
