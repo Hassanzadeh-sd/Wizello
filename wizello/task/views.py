@@ -1,10 +1,10 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
-from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, View, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.urls import reverse_lazy
 from .models import Task, User
-
+from .forms import TaskManagerForm
 # -------------------- Task List
 
 
@@ -56,9 +56,8 @@ class TaskManagerListView(LoginRequiredMixin, ListView):
         return qs
 
 
-class TaskManagerCreateView(LoginRequiredMixin, CreateView):
-    model = Task
-    fields = ('subject', 'description', 'deadline', 'assignee')
+class TaskManagerCreateView(LoginRequiredMixin, FormView):
+    form_class = TaskManagerForm
     template_name = "core/formcreate.html"
     success_url = reverse_lazy("task:taskmanagerlist")
 
@@ -67,7 +66,7 @@ class TaskManagerCreateView(LoginRequiredMixin, CreateView):
         self.object.owner = self.request.user
         self.object.save()
 
-        assignee = form.cleaned_data['assignee']
+        assignee = form.cleaned_data['ManagerAssignee']
         user_list = User.objects.filter(pk__in=assignee)
         for objuser in user_list:
             self.object.assignee.add(objuser)
