@@ -69,7 +69,6 @@ class RequestManagerAcceptView(LoginRequiredMixin, View):
 
 
 # -------------------- Request Admin List
-
 class RequestAdminListView(LoginRequiredMixin, ListView):
     model = Request
     context_object_name = "requests"

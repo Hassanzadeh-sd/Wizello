@@ -1,12 +1,12 @@
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
-from django.views.generic import ListView, View, FormView
+from django.views.generic import ListView, View, FormView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.urls import reverse_lazy
 from .forms import RegisterForm
 from .models import Employee, User, Organization
 
-# -------------------- Account List
+# -------------------- Employee List
 
 
 class EmployeeListView(LoginRequiredMixin, ListView):
@@ -27,6 +27,29 @@ class EmployeeDeactiveView(LoginRequiredMixin, View):
         obj_employee.position = "E"
         obj_employee.save()
         return HttpResponseRedirect(reverse_lazy("account:employeelist"))
+
+
+# -------------------- Employee List
+class EmployeeAdminListView(LoginRequiredMixin, ListView):
+    model = Employee
+    context_object_name = "employees"
+    template_name = "account/accountadminlist.html"
+
+
+class EmployeeAdminDeactiveView(LoginRequiredMixin, View):
+    def get(self, request, pk, *args, **kwargs):
+        obj_employee = get_object_or_404(Employee, pk=pk)
+        obj_employee.organization = None
+        obj_employee.position = "E"
+        obj_employee.save()
+        return HttpResponseRedirect(reverse_lazy("account:employeeadminlist"))
+
+
+class EmployeeAdminUpdateView(LoginRequiredMixin, UpdateView):
+    model = Employee
+    fields = ('organization', 'position')
+    template_name = "core/formcreate.html"
+    success_url = reverse_lazy("account:employeeadminlist")
 
 
 # -------------------- Register

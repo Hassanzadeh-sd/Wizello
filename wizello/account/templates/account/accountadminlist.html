@@ -1,0 +1,51 @@
+{% extends "core/base.html" %}
+
+{% block title %}Employees{% endblock title %}
+
+{% block content %}
+<div class="card-header bg-transparent d-inline">
+</div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Organization</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Act</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+{% for obj_employee in employees %}
+    
+                  <tr>
+                    <th scope="row">
+                        <span>{{obj_employee.id}}</span>
+                    </th>
+                    <td>
+                        <span>{{obj_employee.user.username}}</span>
+                    </td>                
+                    <td>
+                        <span>{{obj_employee.organization}}</span>
+                    </td>                                    
+                    <td>
+                        <span>{{obj_employee.get_position_display}}</span>
+                    </td>                           
+                    <td>
+                        <div>
+                        <a href="{% url 'account:employeeadminupdate' obj_employee.id %}">Edit</a> /
+                        {% if obj_employee.organization == None %}
+                        <span>-</span>
+                        {% else %}
+                        <a href="{% url 'account:employeeadmindeactive' obj_employee.id %}">DeActivate</a>
+                        {% endif %}
+                        </div>
+                    </td>
+                  </tr>
+{% endfor %}
+                </tbody>
+              </table>
+            </div>
+{% endblock content %}
