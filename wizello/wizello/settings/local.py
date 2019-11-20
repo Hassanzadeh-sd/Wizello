@@ -53,6 +53,7 @@ INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 LOGOUT_REDIRECT_URL = '/login/'
 LOGIN_REDIRECT_URL = '/dashboard/'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
