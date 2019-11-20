@@ -93,14 +93,9 @@
         <ul class="navbar-nav">
         <hr class="my-3">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'task:tasklist' %}">
-              <i class="ni ni-bell-55 text-yellow"></i> Tasks
-            </a>
+            {% if request.user.employee.position == "M" %}
             <a class="nav-link" href="{% url 'task:taskmanagerlist' %}">
               <i class="ni ni-bell-55 text-yellow"></i> Task Manager
-            </a>            
-            <a class="nav-link" href="{% url 'request:requestlist' %}">
-              <i class="ni ni-archive-2 text-info"></i> Requests
             </a>            
             <a class="nav-link" href="{% url 'request:requestmanagerlist' %}">
               <i class="ni ni-archive-2 text-info"></i> Request Manager
@@ -108,6 +103,13 @@
             <a class="nav-link" href="{% url 'account:employeelist' %}">
               <i class="ni ni-circle-08 text-danger"></i> Employee
             </a>            
+            {% endif %}
+            <a class="nav-link" href="{% url 'request:requestlist' %}">
+              <i class="ni ni-archive-2 text-info"></i> Requests
+            </a>            
+            <a class="nav-link" href="{% url 'task:tasklist' %}">
+              <i class="ni ni-bell-55 text-yellow"></i> Tasks
+            </a>
           </li>
         </ul>
       </div>
