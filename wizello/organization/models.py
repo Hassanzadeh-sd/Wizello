@@ -12,5 +12,5 @@ class Organization(BaseModel):
     def __str__(self):
         return self.name
 
-#    def get_absolute_url(self):
-#        return reverse("organization_detail", kwargs={"pk": self.pk})
+    def get_employeesCount(self):
+        return str(self.employee.count())

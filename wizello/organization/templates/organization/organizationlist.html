@@ -1,0 +1,42 @@
+{% extends "core/base.html" %}
+
+{% block title %}Organization{% endblock title %}
+
+{% block content %}
+<div class="card-header bg-transparent d-inline">
+    <a href="{% url 'organization:organizationcreate' %}" class="btn btn-info">Create New Organization</a>
+</div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Employees</th>
+                    <th scope="col">ACT</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+{% for obj_organization in organizations %}
+    
+                  <tr>
+                    <th scope="row">
+                        <span>{{obj_organization.id}}</span>
+                    </th>
+                    <th scope="row">
+                        <span>{{obj_organization.name}}</span>
+                    </th>
+                    <td>
+                        <span>{{obj_organization.get_employeesCount}}</span>
+                    </td>                 
+                    <td>
+                        <a href="{% url 'organization:organizationupdate' obj_organization.id %}">Edit</a> /
+                        <a href="{% url 'organization:organizationdelete' obj_organization.id %}">Delete</a>
+                    </td>
+                  </tr>
+{% endfor %}
+                </tbody>
+              </table>
+            </div>
+{% endblock content %}
