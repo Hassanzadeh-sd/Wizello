@@ -9,6 +9,13 @@ class Employee(BaseModel):
         User, on_delete=models.CASCADE, related_name="employee")
     organization = models.ForeignKey(
         Organization, on_delete=models.CASCADE, default=None, blank=True, null=True, related_name="employee")
+    POSITION_TYPE = (
+        ('M', "Manager"),
+        ('EO', "Employee Organization"),
+        ('E', "Employee"),
+    )
+    position = models.CharField(
+        max_length=15, choices=POSITION_TYPE, default="E")
 
     class Meta:
         verbose_name = "Employee"
