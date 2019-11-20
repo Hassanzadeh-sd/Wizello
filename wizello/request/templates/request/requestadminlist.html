@@ -1,0 +1,51 @@
+{% extends "core/base.html" %}
+
+{% block title %}Admin Requests{% endblock title %}
+
+{% block content %}
+<div class="card-header bg-transparent d-inline">
+</div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Organization</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Act</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+{% for obj_request in requests %}
+    
+                  <tr>
+                    <th scope="row">
+                        <span>{{obj_request.id}}</span>
+                    </th>
+                    <th scope="row">
+                        <span>{{obj_request.organization.name}}</span>
+                    </th>
+                    <td>
+                        <span>{{obj_request.user.username}}</span>
+                    </td>
+                    <td>
+                        <span>{{obj_request.get_position_display}}</span>
+                    </td>                    
+                    <td>
+                    {% if obj_request.agreement %}
+                      <span>{{obj_request.agreement}}</span>
+                    {% else %}
+                        <div>
+                            <a href="{% url 'request:requestadminaccept' obj_request.id %}">Active</a> / 
+                            <a href="{% url 'request:requestdelete' obj_request.id %}">Delete</a>
+                        </div>
+                    {% endif %}
+                    </td>
+                  </tr>
+{% endfor %}
+                </tbody>
+              </table>
+            </div>
+{% endblock content %}

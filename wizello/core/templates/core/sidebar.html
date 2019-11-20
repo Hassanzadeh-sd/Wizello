@@ -95,21 +95,29 @@
           <li class="nav-item">
             {% if request.user.employee.position == "M" %}
             <a class="nav-link" href="{% url 'task:taskmanagerlist' %}">
-              <i class="ni ni-bell-55 text-yellow"></i> Task Manager
+              <i class="ni ni-bell-55 text-yellow"></i> Organization Task
             </a>            
             <a class="nav-link" href="{% url 'request:requestmanagerlist' %}">
-              <i class="ni ni-archive-2 text-info"></i> Request Manager
-            </a>                        
+              <i class="ni ni-archive-2 text-info"></i> Employees Request
+            </a>                               
             <a class="nav-link" href="{% url 'account:employeelist' %}">
-              <i class="ni ni-circle-08 text-danger"></i> Employee
+              <i class="ni ni-circle-08 text-danger"></i> Employees List
             </a>            
-            {% endif %}
+            <a class="nav-link" href="{% url 'request:requestlist' %}">
+              <i class="ni ni-archive-2 text-info"></i> My Requests
+            </a>            
+            {% elif request.user.is_staff %}
+            <a class="nav-link" href="{% url 'request:requestadminlist' %}">
+              <i class="ni ni-archive-2 text-info"></i> Request Admin
+            </a>                           
+            {% else %}
             <a class="nav-link" href="{% url 'request:requestlist' %}">
               <i class="ni ni-archive-2 text-info"></i> Requests
-            </a>            
+            </a>
             <a class="nav-link" href="{% url 'task:tasklist' %}">
               <i class="ni ni-bell-55 text-yellow"></i> Tasks
             </a>
+            {% endif %}
           </li>
         </ul>
       </div>
