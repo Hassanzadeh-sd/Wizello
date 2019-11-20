@@ -1,6 +1,7 @@
 from core.models import BaseModel, models
 from django.contrib.auth.models import User
 from organization.models import Organization
+from account.models import Employee
 
 
 class Request(BaseModel):
