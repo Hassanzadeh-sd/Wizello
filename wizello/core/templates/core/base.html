@@ -31,7 +31,7 @@
       <div class="container-fluid">
         <div class="header-body">
 		
-        {% include "core/topnav.html" with pagename='Managment'%}
+        {% include "core/topnav.html" with pagename=request.user.employee.get_position_display %}
 		    {% include "core/card.html" %}
 
 		
