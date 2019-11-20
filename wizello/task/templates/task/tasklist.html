@@ -30,12 +30,20 @@
                     <td>
                         <span>{{obj_task.owner.username}}</span>
                     </td>
+                    {% if obj_task.owner == request.user %}
                     <td>
                         <div>
                             <a href="{% url 'task:taskupdate' obj_task.id %}">Edit</a> / 
                             <a href="{% url 'task:taskdelete' obj_task.id %}">Delete</a>
                         </div>
-                    </td>
+                    </td>                   
+                    {% else %}
+                    <td>
+                        <div>
+                          <span>-</span>
+                        </div>
+                    </td>     
+                    {% endif %}                
                   </tr>
 {% endfor %}
                 </tbody>
