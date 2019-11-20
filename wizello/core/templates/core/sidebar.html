@@ -115,7 +115,10 @@
             </a>                                       
             <a class="nav-link" href="{% url 'organization:organizationlist' %}">
               <i class="ni ni-archive-2 text-info"></i> Organization
-            </a>                                                   
+            </a> 
+            <a class="nav-link" href="{% url 'task:taskadminlist' %}">
+              <i class="ni ni-archive-2 text-info"></i> Tasks
+            </a>                                                               
             {% else %}
             <a class="nav-link" href="{% url 'request:requestlist' %}">
               <i class="ni ni-archive-2 text-info"></i> Requests

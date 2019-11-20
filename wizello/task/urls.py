@@ -1,7 +1,8 @@
 from django.urls import path, include
 from .views import (
     TaskListView, TaskCreateView, TaskUpdateView, TaskDeleteView,
-    TaskManagerListView, TaskManagerCreateView, TaskManagerUpdateView, TaskManagerDeleteView)
+    TaskManagerListView, TaskManagerCreateView, TaskManagerUpdateView, TaskManagerDeleteView,
+    TaskAdminListView, TaskAdminUpdateView, TaskAdminDeleteView)
 
 app_name = 'task'
 
@@ -19,4 +20,10 @@ urlpatterns = [
          name="taskmanagerupdate"),
     path('manager/delete/<int:pk>/',
          TaskManagerDeleteView.as_view(), name="taskmanagerdelete"),
+    # admin
+    path('admin/', TaskAdminListView.as_view(), name="taskadminlist"),
+    path('admin/edit/<int:pk>/', TaskAdminUpdateView.as_view(),
+         name="taskadminupdate"),
+    path('admin/delete/<int:pk>/',
+         TaskAdminDeleteView.as_view(), name="taskadmindelete"),
 ]

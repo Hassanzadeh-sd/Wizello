@@ -1,0 +1,43 @@
+{% extends "core/base.html" %}
+
+{% block title %}Tasks{% endblock title %}
+
+{% block content %}
+<div class="card-header bg-transparent d-inline">
+</div>
+            <div class="table-responsive">
+              <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Act</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+{% for obj_task in tasks %}
+    
+                  <tr>
+                    <th scope="row">
+                        <span>{{obj_task.id}}</span>
+                    </th>
+                    <th scope="row">
+                        <span>{{obj_task.subject}}</span>
+                    </th>
+                    <td>
+                        <span>{{obj_task.owner.username}}</span>
+                    </td>
+                    <td>
+                        <div>
+                            <a href="{% url 'task:taskadminupdate' obj_task.id %}">Edit</a> / 
+                            <a href="{% url 'task:taskadmindelete' obj_task.id %}">Delete</a>
+                        </div>
+                    </td>                   
+                  </tr>
+{% endfor %}
+                </tbody>
+              </table>
+            </div>
+{% endblock content %}

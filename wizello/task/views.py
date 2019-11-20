@@ -85,3 +85,24 @@ class TaskManagerDeleteView(LoginRequiredMixin, DeleteView):
     model = Task
     template_name = "core/confirm_delete.html"
     success_url = reverse_lazy("task:taskmanagerlist")
+
+
+# -------------------- Task Admin List
+
+class TaskAdminListView(LoginRequiredMixin, ListView):
+    model = Task
+    context_object_name = "tasks"
+    template_name = "task/taskadminlist.html"
+
+
+class TaskAdminUpdateView(LoginRequiredMixin, UpdateView):
+    model = Task
+    fields = ('deadline', 'assignee')
+    template_name = "core/formcreate.html"
+    success_url = reverse_lazy("task:taskadminlist")
+
+
+class TaskAdminDeleteView(LoginRequiredMixin, DeleteView):
+    model = Task
+    template_name = "core/confirm_delete.html"
+    success_url = reverse_lazy("task:taskadminlist")
