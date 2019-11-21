@@ -76,7 +76,7 @@ class RequestAdminListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         qs = Request.objects.filter(
-            position="M").filter(user__employee__organization=None)
+            position="M").filter(user__employee__organization=None).filter(agreement=None)
         return qs
 
 
