@@ -10,3 +10,21 @@ from ..models import Organization
 class OrganizationListAPIView(generics.ListAPIView):
     queryset = Organization.objects.all()
     serializer_class = OrganizationModelSerializer
+    permission_classes = [permissions.IsAdminUser]
+
+
+class OrganizationCreateAPIView(generics.CreateAPIView):
+    serializer_class = OrganizationModelSerializer
+    permission_classes = [permissions.IsAdminUser]
+
+
+class OrganizationUpdateAPIView(generics.UpdateAPIView):
+    queryset = Organization.objects.all()
+    serializer_class = OrganizationModelSerializer
+    permission_classes = [permissions.IsAdminUser]
+
+
+class OrganizationDeleteAPIView(generics.DestroyAPIView):
+    queryset = Organization.objects.all()
+    serializer_class = OrganizationModelSerializer
+    permission_classes = [permissions.IsAdminUser]
