@@ -47,6 +47,7 @@ LOCAL_APPS = [
 ]
 THIRD_PARTY_APPS = [
     'crispy_forms',
+    'rest_framework',
 ]
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 

@@ -25,6 +25,10 @@ urlpatterns = [
     path('request/', include('request.urls')),
     path('account/', include('account.urls')),
     path('organization/', include('organization.urls')),
+
+    # API
+    path('api/organization/', include('organization.api.urls')),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
