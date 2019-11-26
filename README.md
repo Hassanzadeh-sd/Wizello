@@ -56,7 +56,6 @@ Python manage.py runserver
 
 
 ![Home](https://cdn1.imggmi.com/uploads/2019/11/26/0001af98b19c58345d24be10883b5b78-full.png)
-![Home01](https://github.githubassets.com/images/icons/emoji/unicode/1f537.png)
 
 <div dir="rtl">
 لیست کاربران تعریف شده :
@@ -82,5 +81,6 @@ firstEmployee : 12345678
 ![PostMan_list](https://cdn1.imggmi.com/uploads/2019/11/26/24c04bd03ebcbcbd190eb7555ee59748-full.png)
 </br>
 ![PostMan_Update](https://cdn1.imggmi.com/uploads/2019/11/26/24c04bd03ebcbcbd190eb7555ee59748-full.png)
-![PostMan_Update01](https://github.githubassets.com/images/icons/emoji/unicode/1f537.png)
 
+## License
+hassanzadeh.sd@gmail.com
