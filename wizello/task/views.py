@@ -4,6 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
 from django.urls import reverse_lazy
 from .models import Task, User
+from account.models import Employee
 from .forms import TaskManagerForm
 # -------------------- Task List
 
@@ -60,6 +61,16 @@ class TaskManagerCreateView(LoginRequiredMixin, FormView):
     form_class = TaskManagerForm
     template_name = "task/createform.html"
     success_url = reverse_lazy("task:taskmanagerlist")
+
+    def get_context_data(self, **kwargs):
+        context = super(TaskManagerCreateView, self).get_context_data(**kwargs)
+        managerAssigneeChoices = []
+        organization = self.request.user.employee.organization
+        for objEmployee in Employee.objects.filter(organization=organization):
+            managerAssigneeChoices.append(dict(key=objEmployee.user.id, value=objEmployee.user.username)
+                                          )
+        context['managerAssigneeChoices'] = managerAssigneeChoices
+        return context
 
     def form_valid(self, form):
         self.object = form.save(commit=False)

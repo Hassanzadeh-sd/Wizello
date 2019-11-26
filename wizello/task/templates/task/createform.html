@@ -29,25 +29,22 @@ Description<span class="asteriskField">*</span>
         </label>
         <div class="form-group">
             <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                <input type="text" name="deadline" class="datetimepicker-input" data-target="#datetimepicker1"/>
+                <input type="text" placeholder="YYYY-MM-DD hh:mm:ss" name="deadline" class="datetimepicker-input" data-target="#datetimepicker1"/>
                 <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
             </div>
         </div>
     </div>
-    
     <div id="div_id_assignee" class="form-group">
         <label for="id_assignee" class="col-form-label  requiredField">
             Assignee<span class="asteriskField">*</span> 
         </label> 
         <div class="">
             <select name="assignee" class="selectmultiple form-control" required id="id_assignee" multiple> 
-            <option value="11">admin1</option> 
-            <option value="3">user_fatemeh</option> 
-            <option value="10">testemployee</option> 
-            <option value="1">admin</option> 
-            <option value="2">user_mojtaba_manager</option>
+            {% for objAssignee in managerAssigneeChoices %}
+                <option value="{{objAssignee.key}}">{{objAssignee.value}}</option> 
+            {% endfor %}
             </select> 
         </div> 
     </div>
