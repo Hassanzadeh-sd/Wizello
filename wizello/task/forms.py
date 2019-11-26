@@ -3,17 +3,16 @@ from .models import Task
 from account.models import Employee
 
 
-class TaskManagerForm(forms.Form):
-    managerAssigneeChoices = []
-    for objEmployee in Employee.objects.filter(pk=2):
-        managerAssigneeChoices.append(
-            [objEmployee.user.id, objEmployee.user.username])
+class TaskManagerForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = [
+            'subject',
+            'description',
+            'deadline',
+            'assignee',
+        ]
 
-    subject = forms.CharField(label="Subject", max_length=200)
-    description = forms.CharField(label='Description',
-                                  widget=forms.Textarea(
-                                      attrs={'placeholder': 'your Description',
-                                             'class': 'form-control'}
-                                  ))
-    deadline = forms.DateTimeField(label="Deadline")
-    ManagerAssignee = forms.SelectMultiple(choices=managerAssigneeChoices)
+    def __init__(self, *args, **kwargs):
+        super(TaskManagerForm, self).__init__(*args, **kwargs)
+        self.fields['deadline'].widget.attrs['class'] = 'datepicker'

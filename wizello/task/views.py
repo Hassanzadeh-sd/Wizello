@@ -58,7 +58,7 @@ class TaskManagerListView(LoginRequiredMixin, ListView):
 
 class TaskManagerCreateView(LoginRequiredMixin, FormView):
     form_class = TaskManagerForm
-    template_name = "core/formcreate.html"
+    template_name = "task/createform.html"
     success_url = reverse_lazy("task:taskmanagerlist")
 
     def form_valid(self, form):
