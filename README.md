@@ -4,6 +4,7 @@ mini task managment project
 
 <div dir="rtl">
 اگر از سیستم عامل Ubuntu استفاده میکنید میتوانید از ENV استفاده با استفاده دستور 
+</div>
 
 ```source ENV/bin/activate```
 
@@ -12,6 +13,7 @@ mini task managment project
 
 اگر از سیستم عامل دیگری استفاده می کنید ابتدا باید پکیج های مورد نیاز را با دستور زیر نصب نمایید
 </div>
+
 
 ```Pip install -r requirments.txt```
 
