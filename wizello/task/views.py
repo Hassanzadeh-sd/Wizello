@@ -21,7 +21,7 @@ class TaskListView(LoginRequiredMixin, ListView):
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
     fields = ('subject', 'description', 'deadline')
-    template_name = "core/formcreate.html"
+    template_name = "task/employeecreateform.html"
     success_url = reverse_lazy("task:tasklist")
 
     def form_valid(self, form):
@@ -35,7 +35,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     fields = ('subject', 'description', 'deadline')
-    template_name = "core/formcreate.html"
+    template_name = "task/employeecreateform.html"
     success_url = reverse_lazy("task:tasklist")
 
 
@@ -59,7 +59,7 @@ class TaskManagerListView(LoginRequiredMixin, ListView):
 
 class TaskManagerCreateView(LoginRequiredMixin, FormView):
     form_class = TaskManagerForm
-    template_name = "task/createform.html"
+    template_name = "task/managercreateform.html"
     success_url = reverse_lazy("task:taskmanagerlist")
 
     def get_context_data(self, **kwargs):
@@ -77,7 +77,7 @@ class TaskManagerCreateView(LoginRequiredMixin, FormView):
         self.object.owner = self.request.user
         self.object.save()
 
-        assignee = form.cleaned_data['ManagerAssignee']
+        assignee = form.cleaned_data['assignee']
         user_list = User.objects.filter(pk__in=assignee)
         for objuser in user_list:
             self.object.assignee.add(objuser)
