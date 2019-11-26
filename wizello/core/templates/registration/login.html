@@ -89,9 +89,11 @@
         <div class="col-lg-5 col-md-7">
           <div class="card bg-secondary shadow border-0">
             <div class="card-body px-lg-3 py-lg-4">
-{% if error %}
-{{ error }}
+
+{% if form.errors %}
+    <p>username or password not correct</p>
 {% endif %}
+
 <br />
               <form role="form" method="POST" action="{% url 'core:login' %}">
               {% csrf_token %}

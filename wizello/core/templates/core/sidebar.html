@@ -98,7 +98,7 @@
               <i class="ni ni-bell-55 text-yellow"></i> Organization Task
             </a>            
             <a class="nav-link" href="{% url 'request:requestmanagerlist' %}">
-              <i class="ni ni-archive-2 text-info"></i> Employees Request
+              <i class="ni ni-box-2 text-info"></i> Employee Requests
             </a>                               
             <a class="nav-link" href="{% url 'account:employeelist' %}">
               <i class="ni ni-circle-08 text-danger"></i> Employees List
@@ -106,18 +106,18 @@
             <a class="nav-link" href="{% url 'request:requestlist' %}">
               <i class="ni ni-archive-2 text-info"></i> My Requests
             </a>            
-            {% elif request.user.is_staff %}
+            {% elif user.is_superuser %}
             <a class="nav-link" href="{% url 'request:requestadminlist' %}">
-              <i class="ni ni-archive-2 text-info"></i> Request Admin
+              <i class="ni ni-box-2 text-info"></i> Request Admin
             </a>                           
             <a class="nav-link" href="{% url 'account:employeeadminlist' %}">
-              <i class="ni ni-archive-2 text-info"></i> Employees List
+              <i class="ni ni-circle-08 text-danger"></i> Employees List
             </a>                                       
             <a class="nav-link" href="{% url 'organization:organizationlist' %}">
-              <i class="ni ni-archive-2 text-info"></i> Organization
+              <i class="ni ni-folder-17 text-blue"></i> Organization
             </a> 
             <a class="nav-link" href="{% url 'task:taskadminlist' %}">
-              <i class="ni ni-archive-2 text-info"></i> Tasks
+              <i class="ni ni-bell-55 text-yellow"></i> Tasks
             </a>                                                               
             {% else %}
             <a class="nav-link" href="{% url 'request:requestlist' %}">
