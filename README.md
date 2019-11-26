@@ -3,7 +3,7 @@
 mini task managment project
 
 <div dir="rtl">
-اگر از سیستم عامل Ubuntu استفاده میکنید میتوانید از ENV استفاده با استفاده دستور 
+اگر از سیستم عامل Ubuntu استفاده میکنید میتوانید با استفاده از دستور زیر از ENV استفاده نمایید :
 </div>
 
 ```source ENV/bin/activate```
