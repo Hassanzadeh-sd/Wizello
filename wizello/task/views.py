@@ -35,7 +35,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     model = Task
     fields = ('subject', 'description', 'deadline')
-    template_name = "task/employeecreateform.html"
+    template_name = "core/formcreate.html"
     success_url = reverse_lazy("task:tasklist")
 
 
