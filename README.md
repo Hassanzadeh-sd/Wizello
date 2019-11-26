@@ -27,7 +27,9 @@ mini task managment project http://wizeanalytics.com/
 
 <div dir="rtl">
 در ابتدا روی سیستم عامل  Postgres نصب کنید و بعد از start سرویس آن با دستورات زیر دیتابیس را ایجاد و کاربر مربوط به آن را نیز با اطلاعات زیر ایجاد نمایید.
+<br>
 </div>
+
 
 ```
 createdb wizello_db
@@ -38,6 +40,7 @@ GRANT ALL PRIVILEGES ON DATABASE mrhassanzadeh_db to wizello_usr;
 
 <div dir="rtl">
 سپس دستورات زیر با برای راه اندازی دیتا بیس و ساخت جداول در shell پروژه ‌Django وارد نمایید:
+<br>
 </div>
 
 ```
@@ -53,4 +56,4 @@ http://127.0.0.1:8000/
 صفجه اصلی نرم افزار به صورت زیر نمایش داده میشود :
 </div>
 
-![LoginPage](https://drive.google.com/open?id=1PMMfwEuqtSuzmkD256SSaug7p01NdAMa)
+![LoginPage](https://cdn1.imggmi.com/uploads/2019/11/26/0001af98b19c58345d24be10883b5b78-full.png)
