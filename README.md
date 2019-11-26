@@ -51,9 +51,31 @@ Python manage.py runserver
 ```
 
 <div dir="rtl">
-در صورتی که مراحل بالا به درستی انجام شده باشند با باز کردن آدرس زیر :
-http://127.0.0.1:8000/
-صفجه اصلی نرم افزار به صورت زیر نمایش داده میشود :
+  در صورتی که مراحل بالا به درستی انجام شده باشند با باز کردن آدرس http://127.0.0.1:8000 صفجه اصلی نرم افزار به صورت زیر نمایش داده میشود :
 </div>
 
-![LoginPage](https://cdn1.imggmi.com/uploads/2019/11/26/0001af98b19c58345d24be10883b5b78-full.png)
+
+![Home](https://cdn1.imggmi.com/uploads/2019/11/26/0001af98b19c58345d24be10883b5b78-full.png)
+<div dir="rtl">
+لیست کاربران تعریف شده :
+</div>
+
+```
+Admin : 12345678
+manager : 12345678
+firstEmployee : 12345678
+```
+<div dir="rtl">
+برای ورود به سیستم از منوی بالا روی  گزینه Login کلیک کنید و میتوانید با اطلاعات کاربران بالا وارد سیستم شوید , در ضمن میتوانید با کلیک روی گزینه Register Employee کارمند جدیدی در سیستم تعریف کنید.
+<h3>
+  نکته : تمامی کاربران حتی SuperUser که Admin هست هم  فقط از صفحه لاگین برای ورود استفاده میکنند و نیازی به وارد شدن به DjangoAdmin نیست.
+ </h3>
+</div>  
+
+## Test API
+<div dir="rtl">
+برای آزمایش بخش API در ابتدا از ابزار نمایش DRF استفاده کردم و بعد از پیاده سازی کامل از ابزار PostMan برای آزمایش دقیق تر استفاده کردم.
+</div>  
+
+![PostMan_list](https://cdn1.imggmi.com/uploads/2019/11/26/24c04bd03ebcbcbd190eb7555ee59748-full.png)
+![PostMan_Update](https://cdn1.imggmi.com/uploads/2019/11/26/24c04bd03ebcbcbd190eb7555ee59748-full.png)
