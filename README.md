@@ -46,7 +46,10 @@ GRANT ALL PRIVILEGES ON DATABASE mrhassanzadeh_db to wizello_usr;
 ```
 Python manage.py makemigrations
 Python manage.py migrate
-python manage.py loaddata <  initialdata.json
+python manage.py loaddata organization.json
+python manage.py loaddata account.json
+python manage.py loaddata request.json
+python manage.py loaddata task.json
 Python manage.py runserver
 ```
 
