@@ -1,0 +1,20 @@
+[
+  {
+    "model": "organization.organization",
+    "pk": 1,
+    "fields": {
+      "updated": "2019-11-26T13:37:11.302Z",
+      "created": "2019-11-26T13:37:11.303Z",
+      "name": "Wize Organization"
+    }
+  },
+  {
+    "model": "organization.organization",
+    "pk": 2,
+    "fields": {
+      "updated": "2019-11-27T13:37:11.302Z",
+      "created": "2019-11-27T13:37:11.303Z",
+      "name": "MicroStrategy"
+    }
+  }
+]

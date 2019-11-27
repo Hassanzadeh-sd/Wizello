@@ -1,0 +1,78 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$rLhIZKfu0GUU$ys5B8bf2Siw83qYQ0/LpWDCaowDmsbUWpVOnF5MMtAo=",
+      "last_login": "2019-11-26T13:41:34.107Z",
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "",
+      "last_name": "",
+      "email": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2019-11-26T13:34:49.670Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$4OD2aU2TQl3u$8lN6CmpyeQTUogaPMQAp/CS5UyVXF/0LvIoRfxwY+FU=",
+      "last_login": "2019-11-26T13:41:50.317Z",
+      "is_superuser": false,
+      "username": "manager",
+      "first_name": "",
+      "last_name": "",
+      "email": "manager@wizello.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-11-26T13:36:02.845Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$150000$v0fgxqvlX4Vt$q9YM/a4BkZprXVcBLGD8LX96+dWeyVfHy24NBem8YWQ=",
+      "last_login": "2019-11-26T13:39:15.254Z",
+      "is_superuser": false,
+      "username": "firstEmployee",
+      "first_name": "",
+      "last_name": "",
+      "email": "firstEmployee@wizello.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2019-11-26T13:39:07.582Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "account.employee",
+    "pk": 1,
+    "fields": {
+      "updated": "2019-11-26T13:37:48.420Z",
+      "created": "2019-11-26T13:36:03.502Z",
+      "user": 2,
+      "organization": 1,
+      "position": "M"
+    }
+  },
+  {
+    "model": "account.employee",
+    "pk": 2,
+    "fields": {
+      "updated": "2019-11-26T13:41:55.043Z",
+      "created": "2019-11-26T13:39:08.148Z",
+      "user": 3,
+      "organization": 1,
+      "position": "EO"
+    }
+  }
+]
